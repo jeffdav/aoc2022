@@ -24,7 +24,7 @@ typedef enum _Result {
 
 //   // Enemy plays Paper:
 //   {"B X", LOSE + ROCK },
-//   {"B Y", DRAW + PAPER},
+//   {"B Y", DRAW + PAPER },
 //   {"B Z", WIN + SCISSORS },
 
 //   // Enemy plays Scissors:
