@@ -65,4 +65,6 @@ int main (int argc, char *argv[]) {
   }
 
   std::cout << "Total score is: " << score << std::endl;
+
+  file.close();
 }
