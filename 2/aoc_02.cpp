@@ -36,22 +36,22 @@ typedef enum _Result {
 // Part two: X = Lose, Y = Draw, Z = Win
 std::map<std::string, int64_t> results = {
   // Enemy plays Rock:
-  {"A X", LOSE + SCISSORS },
-  {"A Y", DRAW + ROCK },
-  {"A Z", WIN + PAPER },
+  { "A X", LOSE + SCISSORS },
+  { "A Y", DRAW + ROCK },
+  { "A Z", WIN + PAPER },
 
   // Enemy plays Paper:
-  {"B X", LOSE + ROCK },
-  {"B Y", DRAW + PAPER},
-  {"B Z", WIN + SCISSORS },
+  { "B X", LOSE + ROCK },
+  { "B Y", DRAW + PAPER},
+  { "B Z", WIN + SCISSORS },
 
   // Enemy plays Scissors:
-  {"C X", LOSE + PAPER },
-  {"C Y", DRAW + SCISSORS },
-  {"C Z", WIN + ROCK },
+  { "C X", LOSE + PAPER },
+  { "C Y", DRAW + SCISSORS },
+  { "C Z", WIN + ROCK },
 };
 
-int main (int argc, char *argv[]) { 
+int main(int argc, char *argv[]) { 
   std::ifstream file("input_02.txt");
   if (!file.is_open()) {
     std::cout << "File open failure. :(" << std::endl;
