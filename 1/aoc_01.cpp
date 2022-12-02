@@ -5,7 +5,7 @@
 #include <vector>
 #include <sstream>
 
-int main (int argc, char *argv[]) { 
+int main(int argc, char *argv[]) { 
   std::ifstream file("input_01.txt");
   if (!file.is_open()) {
     std::cout << "File open failure. :(" << std::endl;
