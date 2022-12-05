@@ -32,8 +32,9 @@ int main(int argc, char *argv[]) {
 
   std::sort(elf_calories.begin(), elf_calories.end());
 
-  // assert(elf_calories.length >= 3);
+  // assert(elf_calories.length() >= 3);
 
+  // TODO: Use std::accumulate() in C++20.
   int64_t top_three_sum = 0;
   std::reverse_iterator rit = elf_calories.rbegin();
   for (int i = 0; i < 3; i++) {
