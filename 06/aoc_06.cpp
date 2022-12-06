@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <set>
 #include <string>
 
 void solve_part_one() {
@@ -10,10 +11,33 @@ void solve_part_one() {
   }
 
   std::string line;
-  while(std::getline(file, line)) {
-  }
+  std::getline(file, line);
 
-  std::cout << "1: " << std::endl;
+  int64_t count = 0;
+  std::deque<char> d;
+  for (auto it = line.begin(); it != line.end(); ++it) {
+    d.push_back(*it);
+    count++;
+    if (d.size() > 4) { d.pop_front(); }
+
+    if (d.size() < 4) continue;
+
+    bool found = true;
+    std::set<char> chars;
+    for (int i = 0; i < d.size(); i++) {
+      auto result = chars.insert(d[i]);
+      if (!result.second) {
+        found = false; 
+        break;
+      }
+    }
+
+    if (found) {
+      break;
+    }
+  }
+  
+  std::cout << "1: " << count << std::endl;
 
   file.close();
 }
@@ -26,10 +50,33 @@ void solve_part_two() {
   }
 
   std::string line;
-  while(std::getline(file, line)) {
+  std::getline(file, line);
+
+  int64_t count = 0;
+  std::deque<char> d;
+  for (auto it = line.begin(); it != line.end(); ++it) {
+    d.push_back(*it);
+    count++;
+    if (d.size() > 14) { d.pop_front(); }
+
+    if (d.size() < 14) continue;
+
+    bool found = true;
+    std::set<char> chars;
+    for (int i = 0; i < d.size(); i++) {
+      auto result = chars.insert(d[i]);
+      if (!result.second) {
+        found = false; 
+        break;
+      }
+    }
+
+    if (found) {
+      break;
+    }
   }
 
-  std::cout << "2: " << std::endl;
+  std::cout << "2: " << count << std::endl;
 
   file.close();
 }
