@@ -83,13 +83,17 @@ void solve_part_one() {
   file.close();
 }
 
-void updateSegment(std::string dir, const end_t& head, end_t& tail) {
+void updateSegment(const std::string& dir, const end_t& head, end_t& tail) {
   int64_t dx = head.first - tail.first;
   int64_t dy = head.second - tail.second;
 
   if (std::abs(dx) <= 1 && std::abs(dy) <= 1) {
     return;
   }
+
+  // From here on this function is total garbage.  But whatever it works
+  // and I want to go to bed.
+  std::string d{dir};
 
   if (dx == 2 && dy == 2) {
     tail.first++;
@@ -105,25 +109,25 @@ void updateSegment(std::string dir, const end_t& head, end_t& tail) {
     tail.second--;
   } else {
     if (dx == 2) {
-      dir = "R";
+      d = "R";
     } else if (dx == -2) {
-      dir = "L";
+      d = "L";
     } else if (dy == 2) {
-      dir =  "U";
+      d =  "U";
     } else if (dy == -2) {
-      dir = "D";
+      d = "D";
     }
 
-    if (dir == "U") {
+    if (d == "U") {
       tail.second = head.second - 1;
       tail.first = head.first;
-    } else if (dir == "D") {
+    } else if (d == "D") {
       tail.second = head.second + 1;
       tail.first = head.first;
-    } else if (dir == "L") {
+    } else if (d == "L") {
       tail.first = head.first + 1;
       tail.second = head.second;
-    } else if (dir == "R") {
+    } else if (d == "R") {
       tail.first = head.first - 1;
       tail.second = head.second;
     }
@@ -131,9 +135,8 @@ void updateSegment(std::string dir, const end_t& head, end_t& tail) {
 }
 
 void updateRope(const std::string& dir, std::array<end_t, 10>& r) {
-  std::string d{dir};
   for (int i = 0; i < r.size() - 1; i++) {
-    updateSegment(d, r[i], r[i + 1]);
+    updateSegment(dir, r[i], r[i + 1]);
   }
 
   tail_locations.insert(r.back());
