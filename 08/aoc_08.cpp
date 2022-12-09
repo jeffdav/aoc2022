@@ -128,6 +128,7 @@ void solve_part_one() {
       for (int x = i - 1; x >= 0; x--) {
         if (forrest[x][j] >= height) {
           visible = false;
+          break;
         }
       }
       if (visible) {
@@ -139,6 +140,7 @@ void solve_part_one() {
       for (int x = i + 1; x < num; x++) {
         if (forrest[x][j] >= height) {
           visible = false;
+          break;
         }
       }
       if (visible) {
@@ -150,6 +152,7 @@ void solve_part_one() {
       for (int y = j - 1; y >= 0; y--) {
         if (forrest[i][y] >= height)  {
           visible = false;
+          break;
         }
       }
       if (visible) {
@@ -161,6 +164,7 @@ void solve_part_one() {
       for (int y = j + 1; y < num; y++) {
         if (forrest[i][y] >= height) {
           visible = false;
+          break;
         }
       }
       if (visible) {
