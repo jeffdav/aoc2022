@@ -52,7 +52,6 @@ void solve_part_one() {
 
       if (std::find(interesting.begin(), interesting.end(), cycle) != interesting.end()) {
         int64_t signal_strength = cycle * reg1ster;
-        std::cout << "1: interesting cycle (" << cycle << ") = " << signal_strength << std::endl;
         interesting_sum += signal_strength;
       }
 
@@ -94,7 +93,6 @@ void solve_part_two() {
   while(std::getline(file, line)) {
     auto cmd = split(line, ' ');
     instruction_t ins = instructions[cmd[CMD]];
-
 
     for (int i = 0; i < cycles[ins]; i++) {
       cycle++;
