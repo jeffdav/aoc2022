@@ -38,12 +38,10 @@ typedef struct _signal {
 } signal_t;
 
 int64_t parse_num(const std::string& str, size_t& pos) {
-  size_t len = 0;
   int64_t val = 0;
   while (std::isdigit(str[pos])) {
     val *= 10;
     val += str[pos] - '0';
-    len++;
     pos++;
   }
   return val;
