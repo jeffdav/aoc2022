@@ -37,7 +37,7 @@ typedef struct _signal {
   static _signal parse(const std::string& str);
 } signal_t;
 
-std::pair<int64_t, size_t> parse_num(const std::string& str, size_t pos) {
+int64_t parse_num(const std::string& str, size_t& pos) {
   size_t len = 0;
   int64_t val = 0;
   while (std::isdigit(str[pos])) {
@@ -46,7 +46,7 @@ std::pair<int64_t, size_t> parse_num(const std::string& str, size_t pos) {
     len++;
     pos++;
   }
-  return { val, len };
+  return val;
 }
 
 void parse_helper(const std::string& str, size_t pos, std::deque<signal_t>& d) {
@@ -65,8 +65,7 @@ void parse_helper(const std::string& str, size_t pos, std::deque<signal_t>& d) {
       d.pop_back();
     } else if (std::isdigit(c)) {
       auto num = parse_num(str, pos);
-      signal_t signal{num.first};
-      pos += num.second;
+      signal_t signal{num};
       d.back().signals->push_back(signal);
     } 
   }
