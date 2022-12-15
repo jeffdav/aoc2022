@@ -152,7 +152,7 @@ void solve_part_one() {
     signal_t lsig = signal_t::parse(left);
     signal_t rsig = signal_t::parse(right);
 
-    ordering_t order =check_sorted(lsig.signals, rsig.signals);
+    ordering_t order = check_sorted(lsig.signals, rsig.signals);
     if (order == LESS_THAN) {
       sum += index;
     }
@@ -190,8 +190,7 @@ void solve_part_two() {
   signals.push_back(divider6);
 
   std::sort(signals.begin(), signals.end(), [](const signal_t& left, const signal_t& right) {
-    ordering_t ordering = check_sorted(left.signals, right.signals);
-    return ordering == LESS_THAN;
+    return check_sorted(left.signals, right.signals) == LESS_THAN;
   });
 
   int64_t product = 1;
