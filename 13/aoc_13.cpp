@@ -190,9 +190,7 @@ void solve_part_two() {
   signals.push_back(divider6);
 
   std::sort(signals.begin(), signals.end(), [](const signal_t& left, const signal_t& right) {
-    signal_t l = left;
-    signal_t r = right;
-    ordering_t ordering = check_sorted(l.signals, r.signals);
+    ordering_t ordering = check_sorted(left.signals, right.signals);
     return ordering == LESS_THAN;
   });
 
