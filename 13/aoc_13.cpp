@@ -90,7 +90,6 @@ typedef enum _ordering {
 ordering_t check_sorted(std::vector<signal_t>* left, std::vector<signal_t>* right) {
   auto lit = left->begin();
   auto rit = right->begin();
-
   while (lit < left->end() && rit < right->end()) {
     if (lit->is_number() && rit->is_number()) {
       if (lit->strength > rit->strength) {
@@ -103,7 +102,6 @@ ordering_t check_sorted(std::vector<signal_t>* left, std::vector<signal_t>* righ
       }
     } else {
       ordering_t ordering;
-
       if (lit->is_vector() && rit->is_vector()) {
         ordering = check_sorted(lit->signals, rit->signals);
       } else if (lit->is_number() && rit->is_vector()) {
@@ -127,7 +125,7 @@ ordering_t check_sorted(std::vector<signal_t>* left, std::vector<signal_t>* righ
     return EQUAL;
   } else if (lit == left->end() && rit < right->end()) {
     return LESS_THAN;
-  } else if (lit < left->end() && rit == right->end()) {
+  } else {
     return GREATER_THAN;
   }
 }
@@ -183,11 +181,8 @@ void solve_part_two() {
     signals.push_back(signal);
   }
 
-  auto divider2 = signal_t::parse("[[2]]");
-  auto divider6 = signal_t::parse("[[6]]");
-
-  signals.push_back(divider2);
-  signals.push_back(divider6);
+  signals.push_back(signal_t::parse("[[2]]"));
+  signals.push_back(signal_t::parse("[[6]]"));
 
   std::sort(signals.begin(), signals.end(), [](const signal_t& left, const signal_t& right) {
     return check_sorted(left.signals, right.signals) == LESS_THAN;
